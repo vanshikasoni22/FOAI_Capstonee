@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+chroma_db/
+data/unanswered.csv
+data/feedback.csv
+venv/
+.DS_Store

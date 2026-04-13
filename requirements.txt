@@ -1,0 +1,12 @@
+streamlit
+fastapi
+uvicorn
+chromadb
+sentence-transformers
+pandas
+requests
+python-dotenv
+vaderSentiment
+plotly
+torch
+transformers
