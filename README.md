@@ -8,6 +8,14 @@ A full-stack RAG (Retrieval-Augmented Generation) chatbot designed to answer col
 - **Intent Classification**: Automatically detects if a query is about admissions, fees, hostel, etc.
 - **Admin Panel**: Update FAQs and re-build the knowledge base on the fly.
 - **Feedback Dashboard**: Analyze user satisfaction with VADER sentiment analysis.
+- **Architecture Documentation**: Detailed knowledge mapping and agent definitions in [ARCHITECTURE.md](./ARCHITECTURE.md).
+
+## 🎓 Capstone Requirements Coverage
+- [x] **50+ Q&A Pairs**: implemented in `data/faqs.csv`.
+- [x] **Knowledge Map**: Visualized and documented in `ARCHITECTURE.md`.
+- [x] **Prompt Design**: Specialized intents and RAG prompts in `core/`.
+- [x] **AI Agent Definition**: Perception-Action loop implemented in `app/main.py`.
+- [x] **Logical Routing**: Intent-based routing logic in `core/intent.py`.
 
 ## Setup Instructions
 
