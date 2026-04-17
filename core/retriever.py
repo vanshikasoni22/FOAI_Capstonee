@@ -26,6 +26,8 @@ def retrieve(query):
             distance = results['distances'][0][i]
             # ChromaDB cosine distance (0 is perfect match, 2 is opposite)
             # If distance > 0.8, it's a weak match
+            print(f"Match {i+1} Distance: {distance:.4f} - {results['metadatas'][0][i]['question']}")
+            
             if i == 0 and distance > 0.8:
                 return "no_match"
             

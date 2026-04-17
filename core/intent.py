@@ -12,8 +12,9 @@ def classify_intent(query):
     
     # Sanitize label (sometimes LLM adds extra text or quotes)
     valid_intents = [
-        "admissions_info", "fees_info", "hostel_info", "academics_info", 
-        "events_info", "contacts_info", "ambiguous", "unknown"
+        "hostel_info", "academics_info", "library_info", "dining_info",
+        "it_support_info", "medical_info", "finance_info", "campus_life_info",
+        "placements_info", "general_info", "ambiguous", "unknown"
     ]
     
     label_clean = label.strip().lower().replace('"', '').replace("'", "")

@@ -20,7 +20,13 @@ def build_index():
     df['text'] = df['question'] + " " + df['answer']
     
     # Get or create collection
-    collection = chroma_client.get_or_create_collection(name="college_faqs")
+    try:
+        chroma_client.delete_collection(name="college_faqs")
+        print("Deleted existing collection 'college_faqs' for a fresh build.")
+    except Exception:
+        pass
+        
+    collection = chroma_client.create_collection(name="college_faqs")
     
     # Prepare data for ChromaDB
     documents = df['text'].tolist()

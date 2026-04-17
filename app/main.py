@@ -102,7 +102,7 @@ with st.sidebar:
     
     topic_filter = st.selectbox(
         "Explore by Topic",
-        ["All", "Admissions", "Fees", "Hostel", "Academics", "Events", "Contacts"]
+        ["All", "Hostel", "Academics", "Library", "Dining", "IT Support", "Medical", "Finance", "Campus Life", "Placements", "General"]
     )
     
     if st.button("Clear Chat 🗑️"):
