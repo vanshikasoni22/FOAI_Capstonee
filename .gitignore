@@ -7,3 +7,4 @@ data/unanswered.csv
 data/feedback.csv
 venv/
 .DS_Store
+.streamlit/secrets.toml

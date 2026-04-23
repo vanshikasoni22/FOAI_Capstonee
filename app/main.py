@@ -6,6 +6,7 @@ import sys
 # Add project root to sys.path to resolve 'core' module imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from core.embedder import get_collection
 from core.retriever import retrieve
 from core.llm import generate_response
 from core.intent import classify_intent
@@ -90,6 +91,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# ─── Build the in-memory ChromaDB index (cached — runs once per session) ───
+collection = get_collection()
+
 # Initialize Session State
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -151,10 +155,10 @@ if prompt := st.chat_input("How can I help you today?"):
             intent = classify_intent(prompt)
             st.write(f"Intent classified: **{intent}**")
             
-            # 2. Retrieval
-            retrieved_chunks = retrieve(prompt)
+            # 2. Retrieval — pass in-memory collection
+            retrieved_chunks = retrieve(prompt, collection)
             
-            # Process response
+            # 3. Generate response
             response = ""
             if intent == "ambiguous":
                 status.update(label="Clarification needed", state="complete")
