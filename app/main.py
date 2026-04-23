@@ -162,19 +162,19 @@ if prompt := st.chat_input("How can I help you today?"):
                     "The user's query is ambiguous. Ask ONE short clarifying question to help them find the right FAQ category.",
                     prompt
                 )
-            elif retrieved_chunks == "no_match" or intent == "unknown":
-                status.update(label="No direct match found", state="complete")
-                response = "I'm sorry, I don't have specific information on that. Please contact the administrative office at admin@college.edu or call the helpline at +1-800-COLLEGE."
-                log_unanswered(prompt)
             else:
                 status.update(label="Generating answer...", state="complete")
-                context_str = "\n".join([f"- {c['question']}: {c['answer']}" for c in retrieved_chunks])
+                context_str = ""
+                if retrieved_chunks != "no_match":
+                    context_str = "\n".join([f"- {c['question']}: {c['answer']}" for c in retrieved_chunks])
+                else:
+                    log_unanswered(prompt)
                 
                 system_prompt = (
                     "You are a helpful, friendly FAQ assistant for a college. "
-                    "Answer the student's question using ONLY the context provided below. "
-                    "Be concise (2-4 sentences). If the context does not contain the answer, "
-                    "say you don't know and suggest contacting the admin office. Do not make up information.\n\n"
+                    "Answer the student's question using the provided context if available. "
+                    "If the context does not contain the answer or is empty, use your general knowledge about colleges to provide a helpful answer. "
+                    "Be concise (2-4 sentences).\n\n"
                     f"Context:\n{context_str}"
                 )
                 response = generate_response(system_prompt, prompt, st.session_state.messages)
