@@ -52,7 +52,7 @@ data = """1	Hostel	What are the main gate timings?	The main gate closes at 10:00
 49	General	Where can I get an ID card?	New or replacement ID cards are issued at the Registrar’s Office. Replacement fee is ₹500.
 50	General	Is there a campus shuttle?	Yes, a shuttle runs from the Main Gate to the Metro Station every 30 minutes."""
 
-output_file = "/Users/abhinavsingh/Documents/FOAI_Capstonee/data/faqs.csv"
+    output_file = os.path.join(os.path.dirname(__file__), "../data/faqs.csv")
 
 # Load into CSV
 rows = []
